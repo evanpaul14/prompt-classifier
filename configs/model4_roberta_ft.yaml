@@ -1,0 +1,28 @@
+_base: "configs/base.yaml"
+
+model_name: "m4"
+model_dir: "models/m4"
+report_path: "reports/m4.json"
+
+base_model: "roberta-base"
+num_labels: 2
+
+training:
+  per_device_train_batch_size: 8    # T4 16GB: roberta-base fits at 8 with seq_len=512
+  per_device_eval_batch_size: 16
+  gradient_accumulation_steps: 2   # effective batch = 16
+  learning_rate: 2.0e-5
+  num_train_epochs: 5
+  warmup_ratio: 0.06
+  weight_decay: 0.01
+  early_stop_patience: 2
+  load_best_model_at_end: true
+  metric_for_best_model: "eval_f1"
+  evaluation_strategy: "epoch"
+  save_strategy: "epoch"
+  logging_steps: 50
+  fp16: true                        # T4 supports fp16
+
+# CV on subsample only — full CV would take ~10h on T4
+cv_subsample_frac: 0.15
+cv_folds: 3

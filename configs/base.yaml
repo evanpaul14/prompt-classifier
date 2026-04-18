@@ -1,0 +1,41 @@
+seed: 42
+
+# Split fractions (applied to unified.parquet)
+test_frac: 0.15
+val_frac: 0.15
+
+# Class balance
+test_block_prevalence: 0.5   # fixed test-set prevalence; 0.5 = 50/50 block/safe
+
+# Quality thresholds
+fpr_target: 0.05   # false positive rate must be below this
+fnr_target: 0.10   # false negative rate must be below this
+
+# Text length bounds (characters)
+min_prompt_len: 5
+max_prompt_len: 20000
+
+# RoBERTa tokenizer settings
+max_seq_length: 512
+truncation_side: "right"   # head truncation
+
+# Paths (relative to repo root; symlinked to Drive on Colab)
+data:
+  raw_dir: "data/raw"
+  interim_dir: "data/interim"
+  processed_dir: "data/processed"
+  unified_path: "data/processed/unified.parquet"
+  train_path: "data/processed/train.parquet"
+  val_path: "data/processed/val.parquet"
+  test_path: "data/processed/test.parquet"
+  manifest_path: "data/processed/split_manifest.json"
+  stats_path: "data/processed/unified_stats.json"
+
+models_dir: "models"
+reports_dir: "reports"
+
+# MinHash near-dup settings
+minhash:
+  threshold: 0.8
+  num_perm: 128
+  n_gram: 5     # char n-gram size

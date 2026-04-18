@@ -1,0 +1,28 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Data and model artifacts
+data/raw/
+data/interim/
+data/processed/
+models/
+reports/
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Environment
+.env
+*.env
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,20 @@
+_base: "configs/base.yaml"
+
+model_name: "m2"
+model_dir: "models/m2"
+report_path: "reports/m2.json"
+
+embedding_model: "Snowflake/snowflake-arctic-embed-m-v2.0"
+embedding_cache: "data/interim/arctic_embeddings.npz"
+
+ffn:
+  hidden_dim: 256
+  dropout: 0.2
+
+training:
+  lr: 1.0e-3
+  batch_size: 64
+  max_epochs: 30
+  early_stop_patience: 3
+
+cv_folds: 5

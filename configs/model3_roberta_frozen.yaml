@@ -1,0 +1,20 @@
+_base: "configs/base.yaml"
+
+model_name: "m3"
+model_dir: "models/m3"
+report_path: "reports/m3.json"
+
+base_model: "roberta-base"
+embedding_cache: "data/interim/roberta_cls.npz"
+
+ffn:
+  hidden_dim: 256
+  dropout: 0.2
+
+training:
+  lr: 1.0e-3
+  batch_size: 32
+  max_epochs: 30
+  early_stop_patience: 3
+
+cv_folds: 5
